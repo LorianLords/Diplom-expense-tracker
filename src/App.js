@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { Provider } from "./shared/context/context";
-import { AppRouter } from "./router";
+import { AppRouter } from "./shared/router";
 
 const App = () => {
   return (

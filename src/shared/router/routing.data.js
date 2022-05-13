@@ -1,13 +1,13 @@
-import { Statistics } from "../pages/statistics";
-import { Home } from "../pages/home";
-import { Main } from "../pages/main";
-import { Login } from "../pages/login";
-import { Report } from "../pages/report";
-import { Categories } from "../pages/categories";
-import { PaymentAccount } from "../pages/payment-account";
-import { Registration } from "../pages/registration";
-import { Logout } from "../pages/logout";
-import { Settings } from "../pages/settings";
+import { Statistics } from "../../pages/statistics";
+import { Home } from "../../pages/home";
+import { Main } from "../../pages/main";
+import { Login } from "../../pages/login";
+import { Report } from "../../pages/report";
+import { Categories } from "../../pages/categories";
+import { PaymentAccount } from "../../pages/payment-account";
+import { Registration } from "../../pages/registration";
+import { Logout } from "../../pages/logout";
+import { Settings } from "../../pages/settings";
 
 export const ROUTES_NAMES = {
   HOME: "/",

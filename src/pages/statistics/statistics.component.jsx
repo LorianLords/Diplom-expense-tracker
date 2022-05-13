@@ -1,5 +1,5 @@
 import React from "react";
 
 export const Statistics = () => {
-  return <div>Home</div>;
+  return <div>Statistics page</div>;
 };

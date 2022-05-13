@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, useLocation } from "react-router-dom";
 import { Navigate, Routes } from "react-router";
-import { PageWrapper } from "../components/page-wrapper";
+import { PageWrapper } from "../../components/page-wrapper";
 import {
   PUBLIC_ROUTES,
   ROUTES_NAMES,
