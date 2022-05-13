@@ -17,7 +17,7 @@ import { ExpenseTrackerContext } from "../../../shared/context/context";
 import {
   incomeCategories,
   expenseCategories,
-} from "../../../shared/constants/categories";
+} from "../../../shared/constants/categories.constant";
 import useStyles from "./styles";
 
 const initialState = {

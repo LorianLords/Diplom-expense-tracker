@@ -6,7 +6,7 @@ const MediumCardComponent = ({ optionalStyles, children, icon }) => {
     <Card
       sx={{
         p: 1.5,
-        maxWidth: 312,
+        width: 312,
         ...optionalStyles,
         color: "#fff",
         fontSize: 26,

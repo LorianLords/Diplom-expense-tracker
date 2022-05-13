@@ -5,7 +5,7 @@ import {
   incomeCategories,
   expenseCategories,
   resetCategories,
-} from "./shared/constants/categories";
+} from "./shared/constants/categories.constant";
 
 const useTransactions = (title) => {
   resetCategories();

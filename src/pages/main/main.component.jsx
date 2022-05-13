@@ -5,10 +5,11 @@ import { Box } from "@mui/material";
 import incomeIcon from "../../assets/icons/cards/income.svg";
 import outcomeIcon from "../../assets/icons/cards/outcome.svg";
 import balanceIcon from "../../assets/icons/cards/income-icon.svg";
+import { AddTransactionForm } from "../../components/forms/add-transaction-form/add-transaction-form.component";
 
 export const Main = () => {
   return (
-    <Box>
+    <Box sx={{ display: "flex", gap: 3 }}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <UICard
           icon={incomeIcon}
@@ -28,6 +29,9 @@ export const Main = () => {
           title="Total balance"
           total={45090.99}
         />
+      </Box>
+      <Box>
+        <AddTransactionForm title="Add new Transaction" />
       </Box>
     </Box>
   );

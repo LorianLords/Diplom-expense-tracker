@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import Snackbar from "../../components/Snackbar/Snackbar";
 
 export const Statistics = () => {
-  return <div>Statistics page</div>;
+  const [open, setOpen] = useState();
+  return (
+    <div>
+      <Snackbar open={open} setOpen={setOpen}></Snackbar>
+    </div>
+  );
 };
