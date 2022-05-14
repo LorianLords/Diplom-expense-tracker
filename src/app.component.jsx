@@ -6,7 +6,7 @@ import { Provider } from "./shared/context/context";
 import { AppRouter } from "./shared/router";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 
-const App = () => {
+const AppComponent = () => {
   return (
     <Provider>
       <Suspense fallback="loading">
@@ -20,4 +20,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default AppComponent;

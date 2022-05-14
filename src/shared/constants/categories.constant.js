@@ -12,7 +12,7 @@ import medicineIcon from "../../assets/icons/categories/expenses/medicine.svg";
 import photoIcon from "../../assets/icons/categories/expenses/photo-camera.svg";
 import shoppingIcon from "../../assets/icons/categories/expenses/shopping.svg";
 
-const incomeColors = [
+export const incomeColors = [
   "#123123",
   "#154731",
   "#165f40",
@@ -23,7 +23,7 @@ const incomeColors = [
   "#04e38d",
   "#00ff9d",
 ];
-const expenseColors = [
+export const expenseColors = [
   "#b50d12",
   "#bf2f1f",
   "#c9452c",
