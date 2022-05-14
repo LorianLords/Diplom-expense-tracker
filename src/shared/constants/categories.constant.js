@@ -69,11 +69,19 @@ export const CategoryValueTypes = {
   MEDICINE: "MEDICINE",
   PHOTO: "PHOTO",
   SHOPPING: "SHOPPING",
+  SALARY: "SALARY",
   BUSINESS: "BUSINESS",
   INVESTMENTS: "INVESTMENTS",
 };
 
 export const CategoryValues = {
+  [CategoryValueTypes.SALARY]: {
+    type: CategoryValueTypes.SALARY,
+    title: "Salary",
+    amount: 0,
+    color: expenseColors[0],
+    icon: charityIcon,
+  },
   [CategoryValueTypes.CHARITY]: {
     type: CategoryValueTypes.CHARITY,
     title: "Charity",
