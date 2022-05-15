@@ -1,6 +1,5 @@
 import React, { memo, useContext } from "react";
 import { MenuItem, Select } from "@mui/material";
-import { FormContainer } from "../../form-container";
 import { periodValues } from "../../../shared/constants/period-values.constant";
 import { ExpenseTrackerContext } from "../../../shared/context/context";
 
@@ -10,7 +9,12 @@ const ChangePeriodComponent = () => {
   const changePeriod = (e) => handeChangePeriod(e.target.value);
 
   return (
-    <Select id="demo-simple-select1" value={period} onChange={changePeriod}>
+    <Select
+      id="demo-simple-select1"
+      variant="standard"
+      value={period}
+      onChange={changePeriod}
+    >
       {periodValues.map((period) => (
         <MenuItem value={period} key={period}>
           {period}
