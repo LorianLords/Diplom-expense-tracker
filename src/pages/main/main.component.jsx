@@ -7,6 +7,7 @@ import outcomeIcon from "../../assets/icons/cards/outcome.svg";
 import balanceIcon from "../../assets/icons/cards/income-icon.svg";
 import { AddTransactionForm } from "../../components/forms/add-transaction-form/add-transaction-form.component";
 import { ExpenseTrackerContext } from "../../shared/context/context";
+import { MonthBudget } from "../../components/cards/month-budget";
 
 export const Main = () => {
   const { income, expenses, total } = useContext(ExpenseTrackerContext);
@@ -36,7 +37,9 @@ export const Main = () => {
       <Box>
         <AddTransactionForm title="Add new Transaction" />
       </Box>
-      <Box></Box>
+      <Box>
+        <MonthBudget title="Month budget" subtitle="Monthly payment limit" />
+      </Box>
     </Box>
   );
 };
