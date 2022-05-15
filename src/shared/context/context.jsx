@@ -39,6 +39,7 @@ export const ExpenseTrackerContext = createContext({
   handleAddCategories: () => {},
   categoryIcons: [],
   username: "",
+  categories: [],
 });
 
 export const Provider = ({ children }) => {
@@ -210,6 +211,7 @@ export const Provider = ({ children }) => {
         categoryIcons,
         username,
         currentCategories,
+        categories,
       }}
     >
       {children}
