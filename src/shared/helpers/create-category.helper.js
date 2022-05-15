@@ -9,8 +9,7 @@ export const createCategory = ({
   if (
     typeof name !== "string" ||
     typeof categoryType !== "string" ||
-    typeof iconId !== "string" ||
-    typeof color !== "string"
+    typeof iconId !== "string"
   )
     throw Error("createCategory wrong params");
   return {
