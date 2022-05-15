@@ -36,6 +36,7 @@ export const Main = () => {
       <Box>
         <AddTransactionForm title="Add new Transaction" />
       </Box>
+      <Box></Box>
     </Box>
   );
 };
