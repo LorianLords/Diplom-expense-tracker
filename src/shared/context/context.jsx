@@ -18,8 +18,10 @@ import { filterByDate } from "../helpers/filter-by-date.helper";
 import { createTransaction } from "../helpers/create-transaction.helper";
 import { createPaymentAccount } from "../helpers/create-payment-account.helper";
 import { createCategory } from "../helpers/create-category.helper";
+import { getCurrentCategories } from "../helpers/get-current-categories.helper";
 
 export const ExpenseTrackerContext = createContext({
+  currentCategories: [],
   mostExpensiveTransactions: [],
   mostExpensiveTransaction: 0,
   recentTransactions: [],
@@ -48,6 +50,11 @@ export const Provider = ({ children }) => {
     initialAccount[0].id
   );
   const [categories, setCategories] = useState(initialCategories);
+
+  const currentCategories = useMemo(
+    () => getCurrentCategories(categories),
+    [categories]
+  );
 
   const categoryIcons = useMemo(() => {
     return [...initialCategoryIcons];
@@ -202,6 +209,7 @@ export const Provider = ({ children }) => {
         handleAddCategories,
         categoryIcons,
         username,
+        currentCategories,
       }}
     >
       {children}

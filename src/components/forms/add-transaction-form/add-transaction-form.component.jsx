@@ -1,26 +1,27 @@
-import React, { memo, useState } from "react";
+import React, { memo, useContext, useState } from "react";
 import { InfoCard } from "../../../shared/components/info-card";
 import { Box, Button, MenuItem, Select, TextField } from "@mui/material";
-import {
-  categories,
-  CategoriesTypes,
-  categoriesTypes,
-  CategoryValueTypes,
-} from "../../../shared/constants/categories.constant";
 import { DesktopDatePicker } from "@mui/x-date-pickers";
+import { ExpenseTrackerContext } from "../../../shared/context/context";
+import { getIcon } from "../../../shared/helpers/get-icon.helper";
+import { CategoryType } from "../../../shared/types/category-type.types";
+import { categoryTypes } from "../../../shared/constants/category-types.constant";
 
 const AddTransactionFormComponent = ({ title }) => {
-  const [categoryType, setCategoryType] = useState(CategoriesTypes.OUTCOME);
-  const [category, setCategory] = useState(CategoryValueTypes.SHOPPING);
+  const { currentCategories, categoryIcons } = useContext(
+    ExpenseTrackerContext
+  );
+  const [categoryType, setCategoryType] = useState(CategoryType.EXPENSES);
+  const [categoryId, setCategoryId] = useState("");
 
-  const handleChange = (e) => {
+  const handleChangeCategoryType = (e) => {
     setCategoryType(e.target.value);
   };
 
   const handleChangeCategory = (e) => {
-    setCategory(e.target.value);
+    setCategoryId(e.target.value);
   };
-  const [value, setValue] = useState(new Date("2014-08-18T21:11:54"));
+  const [value, setValue] = useState(new Date());
 
   const handleDateChange = (newValue) => {
     setValue(newValue);
@@ -41,26 +42,39 @@ const AddTransactionFormComponent = ({ title }) => {
           id="demo-simple-select"
           value={categoryType}
           label="Category Type"
-          onChange={handleChange}
+          onChange={handleChangeCategoryType}
         >
-          {categoriesTypes.map(({ categoryType, title }) => (
+          {categoryTypes.map((categoryType) => (
             <MenuItem value={categoryType} key={categoryType}>
-              {title}
+              {categoryType}
             </MenuItem>
           ))}
         </Select>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={category}
+          value={categoryId}
           label="Category"
           onChange={handleChangeCategory}
         >
-          {categories[categoryType].map(({ title, color, icon, type }) => (
-            <MenuItem value={type} key={title}>
-              {title}
-            </MenuItem>
-          ))}
+          {currentCategories[categoryType].map(
+            ({ name, iconId, id, color }) => (
+              <MenuItem
+                value={id}
+                key={name}
+                sx={{ bgcolor: color, display: "flex", gap: 1 }}
+              >
+                <Box sx={{ width: 20, height: 20 }}>
+                  <img
+                    src={getIcon({ iconId, icons: categoryIcons })}
+                    alt="icon"
+                  />
+                </Box>
+
+                {name}
+              </MenuItem>
+            )
+          )}
         </Select>
         <TextField
           fullWidth
@@ -71,7 +85,7 @@ const AddTransactionFormComponent = ({ title }) => {
         />
         <DesktopDatePicker
           label="Date"
-          inputFormat="MM/dd/yyyy"
+          inputFormat="yyyy-mm-dd"
           value={value}
           onChange={handleDateChange}
           renderInput={(params) => <TextField {...params} />}
