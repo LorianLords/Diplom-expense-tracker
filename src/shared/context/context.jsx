@@ -40,6 +40,7 @@ export const ExpenseTrackerContext = createContext({
   categoryIcons: [],
   username: "",
   categories: [],
+  period: PeriodTypes.WEEK,
 });
 
 export const Provider = ({ children }) => {
@@ -212,6 +213,7 @@ export const Provider = ({ children }) => {
         username,
         currentCategories,
         categories,
+        period,
       }}
     >
       {children}

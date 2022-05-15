@@ -12,6 +12,7 @@ import { RecentTransactions } from "../../components/cards/recent-transactions";
 import * as Styled from "../../shared/styled/shared.styles";
 import { PopularCategories } from "../../components/cards/popular-categories";
 import { UserGreetings } from "../../components/user-greetings";
+import { ChangePeriod } from "../../components/forms/change-period";
 
 export const Main = () => {
   const { income, expenses, total, username } = useContext(
@@ -20,9 +21,11 @@ export const Main = () => {
 
   return (
     <Styled.Flex sx={{ gap: 3 }}>
-      <Styled.Flex sx={{ gap: 1 }}>
+      <Styled.Flex sx={{ gap: 5, flexDirection: "row" }}>
         <UserGreetings username={username} />
-        <Button> 123</Button>
+        <Box sx={{ width: 200 }}>
+          <ChangePeriod />
+        </Box>
       </Styled.Flex>
       <Box sx={{ display: "flex", gap: 3 }}>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>

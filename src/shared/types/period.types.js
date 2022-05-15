@@ -1,6 +1,6 @@
 export const PeriodTypes = {
-  WEEK: "WEEK",
-  MONTH: "MONTH",
-  LAST_MONTH: "LAST_MONTH",
-  ALL_TIME: "ALL_TIME",
+  WEEK: "7 days",
+  MONTH: "30 days",
+  LAST_MONTH: "Last Month",
+  ALL_TIME: "All Time",
 };
