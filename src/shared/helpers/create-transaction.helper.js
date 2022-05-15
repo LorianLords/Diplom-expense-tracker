@@ -15,7 +15,7 @@ export const createTransaction = ({
     typeof categoryType !== "string" ||
     typeof paymentAccountId !== "string"
   )
-    throw Error("createCategory wrong params");
+    throw Error("createTransaction wrong params");
   return {
     id: v4(),
     amount,
