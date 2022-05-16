@@ -1,14 +1,13 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useMemo, useState, useCallback } from "react";
 import { Box, MenuItem, Select } from "@mui/material";
 import { categoryTypes } from "../../shared/constants/category-types.constant";
 
 import { CategoryType } from "../../shared/types/category-type.types";
 import { Pie } from "react-chartjs-2";
-import { chartColors } from "./categories.data";
 import { ExpenseTrackerContext } from "../../shared/context/context";
 import { ChangePeriod } from "../../components/forms/change-period";
 import { CategoriesCard } from "../../components/cards/categories-card";
-export { chartColors } from "./categories.data";
+import { CreateCategoryModal } from "../../components/modals/create-category";
 
 const options = {
   legend: {
@@ -28,6 +27,10 @@ export const Categories = () => {
   const handleChangeCategoryType = (e) => {
     setCategoryType(e.target.value);
   };
+  const [open, setOpen] = useState();
+
+  const handleOpen = useCallback(() => setOpen(true), []);
+  const handleClose = useCallback(() => setOpen(false), []);
 
   const data = useMemo(() => {
     const categories = popularCategories[categoryType];
@@ -38,8 +41,7 @@ export const Categories = () => {
       datasets: [
         {
           data: categories.map((value) => value.amount),
-          backgroundColor: chartColors,
-          hoverBackgroundColor: chartColors,
+          backgroundColor: categories.map((value) => value.color),
         },
       ],
     };
@@ -48,7 +50,7 @@ export const Categories = () => {
   return (
     <Box>
       <Box sx={{ display: "flex" }}>
-        <Box sx={{ width: 150 }}>
+        <Box sx={{ mr: 3 }}>
           <Select
             variant="standard"
             id="demo-simple-select1"
@@ -72,8 +74,10 @@ export const Categories = () => {
         <CategoriesCard
           title="Categories"
           categoryType={categoryType}
-        ></CategoriesCard>
+          handleOpen={handleOpen}
+        />
       </Box>
+      <CreateCategoryModal open={open} handleClose={handleClose} />
     </Box>
   );
 };
