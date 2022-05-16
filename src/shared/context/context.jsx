@@ -19,6 +19,7 @@ import { createTransaction } from "../helpers/create-transaction.helper";
 import { createPaymentAccount } from "../helpers/create-payment-account.helper";
 import { createCategory } from "../helpers/create-category.helper";
 import { getCurrentCategories } from "../helpers/get-current-categories.helper";
+import { getTableData } from "../helpers/get-table-data.helper";
 
 export const ExpenseTrackerContext = createContext({
   currentCategories: [],
@@ -41,6 +42,7 @@ export const ExpenseTrackerContext = createContext({
   username: "",
   categories: [],
   period: PeriodTypes.WEEK,
+  tableData: [],
 });
 
 export const Provider = ({ children }) => {
@@ -56,6 +58,11 @@ export const Provider = ({ children }) => {
   const currentCategories = useMemo(
     () => getCurrentCategories(categories),
     [categories]
+  );
+
+  const tableData = useMemo(
+    () => getTableData({ transactions, accounts: paymentAccounts, categories }),
+    [categories, paymentAccounts, transactions]
   );
 
   const categoryIcons = useMemo(() => {
@@ -216,6 +223,7 @@ export const Provider = ({ children }) => {
         currentCategories,
         categories,
         period,
+        tableData,
       }}
     >
       {children}
