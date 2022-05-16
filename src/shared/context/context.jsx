@@ -20,6 +20,7 @@ import { createPaymentAccount } from "../helpers/create-payment-account.helper";
 import { createCategory } from "../helpers/create-category.helper";
 import { getCurrentCategories } from "../helpers/get-current-categories.helper";
 import { getTableData } from "../helpers/get-table-data.helper";
+import { deleteSelectedTransactions } from "../helpers/delete-selected-transactions.helper";
 
 export const ExpenseTrackerContext = createContext({
   currentCategories: [],
@@ -43,6 +44,7 @@ export const ExpenseTrackerContext = createContext({
   categories: [],
   period: PeriodTypes.WEEK,
   tableData: [],
+  deleteTransactions: () => {},
 });
 
 export const Provider = ({ children }) => {
@@ -54,6 +56,14 @@ export const Provider = ({ children }) => {
     initialAccount[0].id
   );
   const [categories, setCategories] = useState(initialCategories);
+
+  const deleteTransactions = useCallback(
+    (ids) =>
+      setTransactions((prev) =>
+        deleteSelectedTransactions({ ids, transactions: prev })
+      ),
+    []
+  );
 
   const currentCategories = useMemo(
     () => getCurrentCategories(categories),
@@ -224,6 +234,7 @@ export const Provider = ({ children }) => {
         categories,
         period,
         tableData,
+        deleteTransactions,
       }}
     >
       {children}

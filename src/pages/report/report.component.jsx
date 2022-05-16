@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
-import { alpha, Box, styled, Typography } from "@mui/material";
+import { alpha, Box, Button, styled, Typography } from "@mui/material";
 import { ExpenseTrackerContext } from "../../shared/context/context";
 
 const columns = [
@@ -85,12 +85,31 @@ const StripedDataGrid = styled(DataGrid)(({ theme }) => ({
 }));
 
 export const Report = () => {
-  const { tableData } = useContext(ExpenseTrackerContext);
+  const { tableData, deleteTransactions } = useContext(ExpenseTrackerContext);
+  const [ids, setIds] = useState([]);
+
+  const handleDelete = () => deleteTransactions(ids);
+
+  const handleChangeIds = (e) => {
+    setIds(e);
+  };
+
   return (
     <Box>
-      <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
-        All Transactions
-      </Typography>
+      <Box sx={{ display: "flex", gap: 5 }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3 }}>
+          All Transactions
+        </Typography>
+
+        {!!ids.length && (
+          <Box>
+            <Button color="error" variant="outlined" onClick={handleDelete}>
+              Delete selected transactions
+            </Button>
+          </Box>
+        )}
+      </Box>
+
       <Box
         sx={{
           height: 650,
@@ -122,6 +141,7 @@ export const Report = () => {
           getRowClassName={(params) =>
             params.indexRelativeToCurrentPage % 2 === 0 ? "even" : "odd"
           }
+          onSelectionModelChange={handleChangeIds}
         />
       </Box>
     </Box>
