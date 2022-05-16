@@ -36,8 +36,7 @@ export const parseDate = (date) => {
 };
 
 export const parseDateStandard = (date) => {
-  const year = date.getFullYear();
   const month = date.getMonth();
   const day = date.getDate();
-  return `${year} ${months[month]} ${day}`;
+  return `${shortMonths[month]} ${day}`;
 };

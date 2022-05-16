@@ -1,14 +1,21 @@
 import React, { memo } from "react";
 import { Box, Card } from "@mui/material";
 
-const MediumCardComponent = ({ optionalStyles, children, icon }) => {
+const MediumCardComponent = ({
+  optionalStyles,
+  children,
+  icon,
+  filter = "brightness(0) invert(1)",
+  color = "#fff",
+  bgcolor = "rgba(236, 236, 236, 0.3)",
+}) => {
   return (
     <Card
       sx={{
         p: 1.5,
         width: 312,
         ...optionalStyles,
-        color: "#fff",
+        color,
         fontSize: 26,
         fontWeight: 500,
         borderRadius: 4,
@@ -26,14 +33,14 @@ const MediumCardComponent = ({ optionalStyles, children, icon }) => {
             height: 60,
             padding: "15px",
             borderRadius: "50%",
-            bgcolor: "rgba(236, 236, 236, 0.3)",
+            bgcolor,
           }}
         >
           <img
             style={{
               width: 30,
               height: 30,
-              filter: "brightness(0) invert(1)",
+              filter,
             }}
             src={icon}
             alt="icon"

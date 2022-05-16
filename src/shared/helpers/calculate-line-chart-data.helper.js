@@ -1,5 +1,5 @@
 import { PeriodTypes } from "../types/period.types";
-import { parseDate } from "./parse-date.helper";
+import { parseDateStandard } from "./parse-date.helper";
 
 const getLabel = (date, number = 0) => {
   const startDateTime = date.getTime() - number * 8.64e7;
@@ -39,6 +39,6 @@ export const calculateLineChartData = ({ transactions, period }) => {
   });
   return {
     values: labelValues,
-    labels: dateLabels.map((date) => parseDate(new Date(date))),
+    labels: dateLabels.map((date) => parseDateStandard(new Date(date))),
   };
 };

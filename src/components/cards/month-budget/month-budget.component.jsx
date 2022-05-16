@@ -5,7 +5,7 @@ import { parsePrice } from "../../../shared/helpers/parse-price.helper";
 import { InfoCard } from "../../../shared/components/info-card";
 import { Box, LinearProgress } from "@mui/material";
 
-const MonthBudgetComponent = ({ title, subtitle }) => {
+const MonthBudgetComponent = ({ title, subtitle, width = 400 }) => {
   const { monthBudget, monthExpenses } = useContext(ExpenseTrackerContext);
 
   const progress = (monthExpenses / monthBudget) * 100;
@@ -15,7 +15,7 @@ const MonthBudgetComponent = ({ title, subtitle }) => {
   const color = linearProgress === 100 ? "error" : "primary";
 
   return (
-    <InfoCard width={400}>
+    <InfoCard width={width}>
       <Styled.Flex sx={{ m: 1, gap: 2 }}>
         <Styled.Flex>
           <Styled.Currency>{parsePrice(monthBudget)}</Styled.Currency>
