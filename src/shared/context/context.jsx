@@ -1,5 +1,4 @@
 import React, { createContext, useCallback, useMemo, useState } from "react";
-
 import { initialTransactions } from "../initial-values/initial-transactions.data";
 import { initialAccount } from "../initial-values/initial-account.data";
 import { initialCategories } from "../initial-values/initial-categories.data";
@@ -21,6 +20,8 @@ import { createCategory } from "../helpers/create-category.helper";
 import { getCurrentCategories } from "../helpers/get-current-categories.helper";
 import { getTableData } from "../helpers/get-table-data.helper";
 import { deleteSelectedTransactions } from "../helpers/delete-selected-transactions.helper";
+import { calculateLineChartData } from "../helpers/calculate-line-chart-data.helper";
+import { CategoryType } from "../types/category-type.types";
 
 export const ExpenseTrackerContext = createContext({
   currentCategories: [],
@@ -45,6 +46,8 @@ export const ExpenseTrackerContext = createContext({
   period: PeriodTypes.WEEK,
   tableData: [],
   deleteTransactions: () => {},
+  expensesChartData: { values: [], labels: [] },
+  incomeChartData: { values: [], labels: [] },
 });
 
 export const Provider = ({ children }) => {
@@ -56,7 +59,6 @@ export const Provider = ({ children }) => {
     initialAccount[0].id
   );
   const [categories, setCategories] = useState(initialCategories);
-
   const deleteTransactions = useCallback(
     (ids) =>
       setTransactions((prev) =>
@@ -153,6 +155,20 @@ export const Provider = ({ children }) => {
     [currentPaymentAccount, period, transactions]
   );
 
+  const { expensesChartData, incomeChartData } = useMemo(() => {
+    const currentTransactions = getCurrentCategories(filteredTransactions);
+    return {
+      expensesChartData: calculateLineChartData({
+        transactions: currentTransactions[CategoryType.EXPENSES],
+        period,
+      }),
+      incomeChartData: calculateLineChartData({
+        transactions: currentTransactions[CategoryType.INCOME],
+        period,
+      }),
+    };
+  }, [filteredTransactions, period]);
+
   const income = useMemo(
     () => calculateIncome(filteredTransactions),
     [filteredTransactions]
@@ -235,6 +251,8 @@ export const Provider = ({ children }) => {
         period,
         tableData,
         deleteTransactions,
+        expensesChartData,
+        incomeChartData,
       }}
     >
       {children}

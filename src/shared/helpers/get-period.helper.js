@@ -7,7 +7,7 @@ export const getPeriod = (period) => {
   const day = date.getDate();
 
   if (period === PeriodTypes.WEEK) {
-    const startDateTime = date.getTime() - 7 * 8.64e7;
+    const startDateTime = date.getTime() - 6 * 8.64e7;
     const startDate = new Date(startDateTime);
     const startDateMonth = startDate.getMonth() + 1;
     const startDateYear = startDate.getFullYear();

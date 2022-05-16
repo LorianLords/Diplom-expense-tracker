@@ -8,7 +8,7 @@ import settings from "../../assets/icons/navbar/settings.svg";
 import logoIcon from "../../assets/icons/navbar/logo.svg";
 
 export const logo = {
-  link: ROUTES_NAMES.HOME,
+  link: ROUTES_NAMES.MAIN,
   icon: logoIcon,
 };
 
@@ -24,23 +24,20 @@ export const NavBarLinks = [
     icon: layers,
   },
   {
-    title: "Report",
-    link: ROUTES_NAMES.REPORT,
+    title: "Account",
+    link: ROUTES_NAMES.PAYMENT_ACCOUNTS,
     icon: report,
   },
+
   {
     title: "Statistics",
     link: ROUTES_NAMES.STATISTICS,
     icon: chart,
   },
+
   {
-    title: "Account",
-    link: ROUTES_NAMES.PAYMENT_ACCOUNTS,
+    title: "All Transactions",
+    link: ROUTES_NAMES.REPORT,
     icon: calendar,
-  },
-  {
-    title: "Settings",
-    link: ROUTES_NAMES.SETTINGS,
-    icon: settings,
   },
 ];
