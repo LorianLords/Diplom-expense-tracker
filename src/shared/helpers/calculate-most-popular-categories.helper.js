@@ -6,9 +6,6 @@ export const calculateMostPopularCategories = ({
   number = 3,
 }) => {
   const store = transactions.reduce((acc, curr) => {
-    if (curr.categoryType === CategoryType.INCOME) {
-      return acc;
-    }
     if (!acc[curr.categoryId]) {
       return {
         ...acc,

@@ -161,11 +161,13 @@ export const Provider = ({ children }) => {
 
   const popularCategories = useMemo(
     () =>
-      calculateMostPopularCategories({
-        transactions: filteredTransactions,
-        categories,
-        number: transactions.length,
-      }),
+      getCurrentCategories(
+        calculateMostPopularCategories({
+          transactions: filteredTransactions,
+          categories,
+          number: transactions.length,
+        })
+      ),
     [categories, filteredTransactions, transactions.length]
   );
 

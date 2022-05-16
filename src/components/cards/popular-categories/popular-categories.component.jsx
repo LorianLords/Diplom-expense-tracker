@@ -6,12 +6,13 @@ import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router";
 import { ROUTES_NAMES } from "../../../shared/router/routing.data";
 import { InfoCardElementCategory } from "../../../shared/components/info-card-element-category";
+import { CategoryType } from "../../../shared/types/category-type.types";
 
 const PopularCategoriesComponent = ({ title }) => {
   const { popularCategories } = useContext(ExpenseTrackerContext);
 
   const lastFourCategories = useMemo(
-    () => popularCategories.slice(0, 4),
+    () => popularCategories[CategoryType.EXPENSES].slice(0, 4),
     [popularCategories]
   );
 
