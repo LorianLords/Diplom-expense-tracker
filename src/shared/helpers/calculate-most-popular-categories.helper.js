@@ -1,5 +1,3 @@
-import { CategoryType } from "../types/category-type.types";
-
 export const calculateMostPopularCategories = ({
   transactions,
   categories,
@@ -18,25 +16,34 @@ export const calculateMostPopularCategories = ({
     };
   }, {});
 
-  return Object.keys(store)
-    .reduce((acc, categoryId) => {
-      return [
-        ...acc,
-        {
-          amount: store[categoryId],
-          categoryId,
-        },
-      ];
-    }, [])
-    .sort((leftValue, rightValue) => {
-      if (leftValue.amount < rightValue.amount) {
-        return 1;
-      }
-      if (leftValue.amount > rightValue.amount) {
-        return -1;
-      }
-      return 0;
-    })
+  const storeKeys = Object.keys(store);
+
+  const zeroCategories = categories
+    .filter((value) => !storeKeys.includes(value.id))
+    .map((value) => value.id);
+
+  return [
+    ...storeKeys
+      .reduce((acc, categoryId) => {
+        return [
+          ...acc,
+          {
+            amount: store[categoryId],
+            categoryId,
+          },
+        ];
+      }, [])
+      .sort((leftValue, rightValue) => {
+        if (leftValue.amount < rightValue.amount) {
+          return 1;
+        }
+        if (leftValue.amount > rightValue.amount) {
+          return -1;
+        }
+        return 0;
+      }),
+    ...zeroCategories.map((categoryId) => ({ categoryId, amount: 0 })),
+  ]
     .slice(0, number)
     .reduce((acc, curr) => {
       return [

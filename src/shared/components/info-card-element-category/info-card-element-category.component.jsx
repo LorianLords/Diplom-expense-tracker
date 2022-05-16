@@ -6,6 +6,7 @@ import { parsePrice } from "../../helpers/parse-price.helper";
 
 const InfoCardElementCategoryComponent = ({
   category: { name, amount, iconId, color },
+  variant = "normal",
 }) => {
   const { categoryIcons } = useContext(ExpenseTrackerContext);
   const icon = useMemo(
@@ -17,7 +18,7 @@ const InfoCardElementCategoryComponent = ({
     <Box
       sx={{
         bgcolor: "#E4E4E4",
-        padding: "20px",
+        padding: variant === "normal" ? "20px" : "10px",
         width: "100%",
         borderRadius: 4,
         display: "flex",
@@ -28,8 +29,8 @@ const InfoCardElementCategoryComponent = ({
       <Box sx={{ display: "flex", gap: 1.5, alignItems: "center" }}>
         <Box
           sx={{
-            width: 48,
-            height: 48,
+            width: variant === "normal" ? 48 : 36,
+            height: variant === "normal" ? 48 : 36,
             borderRadius: "50%",
             bgcolor: color,
             display: "flex",
@@ -37,7 +38,14 @@ const InfoCardElementCategoryComponent = ({
             alignItems: "center",
           }}
         >
-          <img style={{ width: 24, height: 24 }} src={icon} alt="icon" />
+          <img
+            style={{
+              width: variant === "normal" ? 24 : 19,
+              height: variant === "normal" ? 24 : 19,
+            }}
+            src={icon}
+            alt="icon"
+          />
         </Box>
         <Box>
           <Typography sx={{ fontWeight: "bold" }}>{name}</Typography>

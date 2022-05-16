@@ -165,10 +165,10 @@ export const Provider = ({ children }) => {
         calculateMostPopularCategories({
           transactions: filteredTransactions,
           categories,
-          number: transactions.length,
+          number: categories.length,
         })
       ),
-    [categories, filteredTransactions, transactions.length]
+    [categories, filteredTransactions]
   );
 
   const recentTransactions = useMemo(() => {
