@@ -29,54 +29,6 @@ import { CategoryType } from "../types/category-type.types";
 
 export const initialCategoryIcons = [
   createCategoryIcon({
-    iconPath: travelIcon,
-    categoryType: CategoryType.EXPENSES,
-  }),
-  createCategoryIcon({
-    iconPath: vacationIcon,
-    categoryType: CategoryType.EXPENSES,
-  }),
-  createCategoryIcon({
-    iconPath: netflixIcon,
-    categoryType: CategoryType.EXPENSES,
-  }),
-  createCategoryIcon({
-    iconPath: entertainmentIcon,
-    categoryType: CategoryType.EXPENSES,
-  }),
-  createCategoryIcon({
-    iconPath: coffeIcon,
-    categoryType: CategoryType.EXPENSES,
-  }),
-  createCategoryIcon({
-    iconPath: streamIcon,
-    categoryType: CategoryType.INCOME,
-  }),
-  createCategoryIcon({
-    iconPath: lotteryIcon,
-    categoryType: CategoryType.INCOME,
-  }),
-  createCategoryIcon({
-    iconPath: casinoIcon,
-    categoryType: CategoryType.INCOME,
-  }),
-  createCategoryIcon({
-    iconPath: bankIcon,
-    categoryType: CategoryType.INCOME,
-  }),
-  createCategoryIcon({
-    iconPath: workIcon,
-    categoryType: CategoryType.INCOME,
-  }),
-  createCategoryIcon({
-    iconPath: steamIcon,
-    categoryType: CategoryType.INCOME,
-  }),
-  createCategoryIcon({
-    iconPath: programmingIcon,
-    categoryType: CategoryType.INCOME,
-  }),
-  createCategoryIcon({
     iconPath: buisinessIcon,
     categoryType: CategoryType.INCOME,
   }),
@@ -124,5 +76,54 @@ export const initialCategoryIcons = [
   createCategoryIcon({
     iconPath: shoppingIcon,
     categoryType: CategoryType.EXPENSES,
+  }),
+
+  createCategoryIcon({
+    iconPath: travelIcon,
+    categoryType: CategoryType.EXPENSES,
+  }),
+  createCategoryIcon({
+    iconPath: vacationIcon,
+    categoryType: CategoryType.EXPENSES,
+  }),
+  createCategoryIcon({
+    iconPath: netflixIcon,
+    categoryType: CategoryType.EXPENSES,
+  }),
+  createCategoryIcon({
+    iconPath: entertainmentIcon,
+    categoryType: CategoryType.EXPENSES,
+  }),
+  createCategoryIcon({
+    iconPath: coffeIcon,
+    categoryType: CategoryType.EXPENSES,
+  }),
+  createCategoryIcon({
+    iconPath: streamIcon,
+    categoryType: CategoryType.INCOME,
+  }),
+  createCategoryIcon({
+    iconPath: lotteryIcon,
+    categoryType: CategoryType.INCOME,
+  }),
+  createCategoryIcon({
+    iconPath: casinoIcon,
+    categoryType: CategoryType.INCOME,
+  }),
+  createCategoryIcon({
+    iconPath: bankIcon,
+    categoryType: CategoryType.INCOME,
+  }),
+  createCategoryIcon({
+    iconPath: workIcon,
+    categoryType: CategoryType.INCOME,
+  }),
+  createCategoryIcon({
+    iconPath: steamIcon,
+    categoryType: CategoryType.INCOME,
+  }),
+  createCategoryIcon({
+    iconPath: programmingIcon,
+    categoryType: CategoryType.INCOME,
   }),
 ];

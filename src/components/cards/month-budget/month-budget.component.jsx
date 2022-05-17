@@ -40,7 +40,7 @@ const MonthBudgetComponent = ({
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Styled.CardCaption>{subtitle}</Styled.CardCaption>
             <Styled.CardCurrencyCaption>
-              {parsePrice(monthBudget, 0)} / {parsePrice(monthExpenses, 0)}
+              {parsePrice(monthExpenses, 0)} / {parsePrice(monthBudget, 0)}
             </Styled.CardCurrencyCaption>
           </Box>
         </Styled.Flex>

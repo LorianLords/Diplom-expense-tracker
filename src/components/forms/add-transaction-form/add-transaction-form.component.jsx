@@ -8,6 +8,7 @@ import { CategoryType } from "../../../shared/types/category-type.types";
 import { categoryTypes } from "../../../shared/constants/category-types.constant";
 import { FormContainer } from "../../form-container";
 import { getCurrentDate } from "../../../shared/helpers/get-current-date.helper";
+import { validateNumber } from "../../../shared/helpers/validate-number.helper";
 
 const AddTransactionFormComponent = ({ title }) => {
   const { currentCategories, categoryIcons, handleAddTransaction } = useContext(
@@ -45,7 +46,7 @@ const AddTransactionFormComponent = ({ title }) => {
     setDate(newValue);
   };
 
-  const handleNumberChange = (e) => setNumber(e.target.value);
+  const handleNumberChange = (e) => setNumber(validateNumber(e.target.value));
 
   const disabled = !categoryId || number === 0 || isNaN(+number);
 

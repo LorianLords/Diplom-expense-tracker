@@ -3,6 +3,7 @@ import { Box, Button, TextField } from "@mui/material";
 import { FormContainer } from "../../form-container";
 import { InfoCard } from "../../../shared/components/info-card";
 import { ExpenseTrackerContext } from "../../../shared/context/context";
+import { validateNumber } from "../../../shared/helpers/validate-number.helper";
 
 const AccountFormComponent = ({
   title,
@@ -28,9 +29,11 @@ const AccountFormComponent = ({
 
   const handleAccountNameChange = (e) => setAccountName(e.target.value);
 
-  const handleMonthBudgetChange = (e) => setMonthBudget(e.target.value);
+  const handleMonthBudgetChange = (e) =>
+    setMonthBudget(validateNumber(e.target.value));
 
-  const handleInitialBalanceChange = (e) => setInitialBalance(e.target.value);
+  const handleInitialBalanceChange = (e) =>
+    setInitialBalance(validateNumber(e.target.value));
 
   const disabled =
     isNaN(+initialBalance) || isNaN(+monthBudget) || !accountName;
