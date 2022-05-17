@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState, useCallback } from "react";
-import { Box, MenuItem, Select } from "@mui/material";
+import { Box, MenuItem, Select, Typography } from "@mui/material";
 import { categoryTypes } from "../../shared/constants/category-types.constant";
 
 import { CategoryType } from "../../shared/types/category-type.types";
@@ -50,6 +50,9 @@ export const Categories = () => {
   return (
     <Box>
       <Box sx={{ display: "flex" }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold", mr: 3 }}>
+          Categories
+        </Typography>
         <Box sx={{ mr: 3 }}>
           <Select
             variant="standard"

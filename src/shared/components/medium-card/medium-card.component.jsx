@@ -8,12 +8,13 @@ const MediumCardComponent = ({
   filter = "brightness(0) invert(1)",
   color = "#fff",
   bgcolor = "rgba(236, 236, 236, 0.3)",
+  width = 312,
 }) => {
   return (
     <Card
       sx={{
         p: 1.5,
-        width: 312,
+        width,
         ...optionalStyles,
         color,
         fontSize: 26,

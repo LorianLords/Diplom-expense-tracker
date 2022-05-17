@@ -50,7 +50,7 @@ const AddTransactionFormComponent = ({ title }) => {
   const disabled = !categoryId || number === 0 || isNaN(+number);
 
   return (
-    <InfoCard>
+    <InfoCard width={400}>
       <Box sx={{ display: "flex", gap: 2, flexDirection: "column" }}>
         {title}
         <FormContainer title="Amount">

@@ -5,7 +5,7 @@ import { parsePrice } from "../../../shared/helpers/parse-price.helper";
 import { MediumCard } from "../../../shared/components/medium-card";
 import * as Styled from "../../../shared/styled/shared.styles";
 
-const UICardComponent = ({ cardVariant, title, icon, total }) => {
+const UICardComponent = ({ cardVariant, title, icon, total, width }) => {
   const styles = useMemo(() => {
     if (cardVariant === CardVariants.LIGHT_BLUE) {
       return {
@@ -27,7 +27,7 @@ const UICardComponent = ({ cardVariant, title, icon, total }) => {
   }, [cardVariant]);
 
   return (
-    <MediumCard optionalStyles={styles} icon={icon}>
+    <MediumCard width={width} optionalStyles={styles} icon={icon}>
       <Box
         sx={{
           display: "flex",

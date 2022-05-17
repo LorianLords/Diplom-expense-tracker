@@ -11,8 +11,8 @@ import { CategoryType } from "../../../shared/types/category-type.types";
 const PopularCategoriesComponent = ({ title }) => {
   const { popularCategories } = useContext(ExpenseTrackerContext);
 
-  const lastFourCategories = useMemo(
-    () => popularCategories[CategoryType.EXPENSES].slice(0, 4),
+  const lastThreeCategories = useMemo(
+    () => popularCategories[CategoryType.EXPENSES].slice(0, 3),
     [popularCategories]
   );
 
@@ -22,7 +22,13 @@ const PopularCategoriesComponent = ({ title }) => {
 
   return (
     <InfoCard width={400}>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: 2,
+        }}
+      >
         {title}
         <Button variant="outlined" onClick={handleNavigate}>
           See more
@@ -30,7 +36,7 @@ const PopularCategoriesComponent = ({ title }) => {
       </Box>
 
       <Styled.Flex sx={{ gap: 2, mt: 2 }}>
-        {lastFourCategories.map((category) => (
+        {lastThreeCategories.map((category) => (
           <InfoCardElementCategory key={category.id} category={category} />
         ))}
       </Styled.Flex>

@@ -21,7 +21,13 @@ const MostPopularCategoryComponent = ({ title }) => {
   );
 
   return (
-    <MediumCard icon={icon} filter="none" color="#000" bgcolor="#eee">
+    <MediumCard
+      width={360}
+      icon={icon}
+      filter="none"
+      color="#000"
+      bgcolor="#eee"
+    >
       <Styled.Flex sx={{ m: 1, gap: 2, flex: 1, height: "100%" }}>
         <Styled.Flex sx={{ justifyContent: "center", flex: 1, mt: 4 }}>
           <Styled.Currency>{popularCategory.name}</Styled.Currency>
