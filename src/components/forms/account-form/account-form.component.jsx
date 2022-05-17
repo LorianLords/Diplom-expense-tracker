@@ -1,13 +1,17 @@
-import React, { memo, useState } from "react";
+import React, { memo, useContext, useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { FormContainer } from "../../form-container";
 import { InfoCard } from "../../../shared/components/info-card";
+import { ExpenseTrackerContext } from "../../../shared/context/context";
 
 const AccountFormComponent = ({
   title,
   handleSubmit,
   submitButton = "Add",
+  enableDelete = false,
 }) => {
+  const { deleteAccountHandler, currentPaymentAccount, paymentAccounts } =
+    useContext(ExpenseTrackerContext);
   const [initialBalance, setInitialBalance] = useState(0);
   const [monthBudget, setMonthBudget] = useState(0);
   const [accountName, setAccountName] = useState("");
@@ -19,6 +23,8 @@ const AccountFormComponent = ({
       name: accountName,
     });
   };
+
+  const deleteAccount = () => deleteAccountHandler(currentPaymentAccount);
 
   const handleAccountNameChange = (e) => setAccountName(e.target.value);
 
@@ -67,6 +73,16 @@ const AccountFormComponent = ({
         <Button variant="outlined" disabled={disabled} onClick={handleAdd}>
           {submitButton}
         </Button>
+        {enableDelete && (
+          <Button
+            disabled={paymentAccounts.length <= 1}
+            variant="outlined"
+            onClick={deleteAccount}
+            color="error"
+          >
+            Delete Account
+          </Button>
+        )}
       </Box>
     </InfoCard>
   );

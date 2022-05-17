@@ -45,6 +45,7 @@ const EditAccountModalComponent = ({ open, handleClose }) => {
         }}
       >
         <AccountForm
+          enableDelete
           submitButton="Edit"
           handleSubmit={handleAdd}
           title="Edit Account"

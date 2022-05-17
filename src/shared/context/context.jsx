@@ -232,18 +232,23 @@ export const Provider = ({ children }) => {
       };
     }, [filteredTransactions]);
 
-  const deleteAccountHandler = useCallback(
-    (id) =>
-      setCurrentPaymentAccount((prev) => deleteAccount({ id, accounts: prev })),
+  const editAccountHandler = useCallback(
+    ({ id, monthBudget, initialBalance, name }) => {
+      setPaymentAccounts((prev) =>
+        editAccount({ id, accounts: prev, monthBudget, initialBalance, name })
+      );
+    },
     []
   );
 
-  const editAccountHandler = useCallback(
-    ({ id, monthBudget, initialBalance, name }) =>
-      setPaymentAccounts((prev) =>
-        editAccount({ id, accounts: prev, monthBudget, initialBalance, name })
-      ),
-    []
+  const deleteAccountHandler = useCallback(
+    (id) => {
+      setPaymentAccounts((prev) => deleteAccount({ id, accounts: prev }));
+      setCurrentPaymentAccount(
+        (prev) => paymentAccounts.find((value) => value.id !== prev).id
+      );
+    },
+    [paymentAccounts]
   );
 
   return (
