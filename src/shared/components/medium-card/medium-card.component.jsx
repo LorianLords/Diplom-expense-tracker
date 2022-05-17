@@ -21,33 +21,36 @@ const MediumCardComponent = ({
         borderRadius: 4,
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          gap: 2,
-        }}
-      >
+      {icon && (
         <Box
           sx={{
-            width: 60,
-            height: 60,
-            padding: "15px",
-            borderRadius: "50%",
-            bgcolor,
+            display: "flex",
+            gap: 2,
           }}
         >
-          <img
-            style={{
-              width: 30,
-              height: 30,
-              filter,
+          <Box
+            sx={{
+              width: 60,
+              height: 60,
+              padding: "15px",
+              borderRadius: "50%",
+              bgcolor,
             }}
-            src={icon}
-            alt="icon"
-          />
+          >
+            <img
+              style={{
+                width: 30,
+                height: 30,
+                filter,
+              }}
+              src={icon}
+              alt="icon"
+            />
+          </Box>
+          {children}
         </Box>
-        {children}
-      </Box>
+      )}
+      {!icon && children}
     </Card>
   );
 };

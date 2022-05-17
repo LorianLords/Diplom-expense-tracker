@@ -22,6 +22,8 @@ import { getTableData } from "../helpers/get-table-data.helper";
 import { deleteSelectedTransactions } from "../helpers/delete-selected-transactions.helper";
 import { calculateLineChartData } from "../helpers/calculate-line-chart-data.helper";
 import { CategoryType } from "../types/category-type.types";
+import { deleteAccount } from "../helpers/delete-account.helper";
+import { editAccount } from "../helpers/edit-account.helper";
 
 export const ExpenseTrackerContext = createContext({
   currentCategories: [],
@@ -48,6 +50,10 @@ export const ExpenseTrackerContext = createContext({
   deleteTransactions: () => {},
   expensesChartData: { values: [], labels: [] },
   incomeChartData: { values: [], labels: [] },
+  currentPaymentAccount: "",
+  paymentAccounts: [],
+  deleteAccountHandler: () => {},
+  editAccountHandler: () => {},
 });
 
 export const Provider = ({ children }) => {
@@ -226,9 +232,25 @@ export const Provider = ({ children }) => {
       };
     }, [filteredTransactions]);
 
+  const deleteAccountHandler = useCallback(
+    (id) =>
+      setCurrentPaymentAccount((prev) => deleteAccount({ id, accounts: prev })),
+    []
+  );
+
+  const editAccountHandler = useCallback(
+    ({ id, monthBudget, initialBalance, name }) =>
+      setPaymentAccounts((prev) =>
+        editAccount({ id, accounts: prev, monthBudget, initialBalance, name })
+      ),
+    []
+  );
+
   return (
     <ExpenseTrackerContext.Provider
       value={{
+        deleteAccountHandler,
+        editAccountHandler,
         mostExpensiveTransactions,
         mostExpensiveTransaction,
         recentTransactions,
@@ -253,6 +275,8 @@ export const Provider = ({ children }) => {
         deleteTransactions,
         expensesChartData,
         incomeChartData,
+        currentPaymentAccount,
+        paymentAccounts,
       }}
     >
       {children}
