@@ -89,7 +89,7 @@ const AddTransactionFormComponent = ({ title }) => {
                 <MenuItem
                   value={id}
                   key={name}
-                  sx={{ bgcolor: color, display: "flex", gap: 1 }}
+                  sx={{ display: "flex", gap: 1 }}
                 >
                   <Box sx={{ width: 20, height: 20 }}>
                     <img
